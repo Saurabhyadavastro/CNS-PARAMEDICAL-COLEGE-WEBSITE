@@ -9,7 +9,8 @@ import {
   GraduationCap, 
   ChevronDown, 
   AlertCircle,
-  FileText
+  FileText,
+  Lock
 } from 'lucide-react';
 import { siteConfig } from '../../content/siteConfig';
 import { Button } from '../ui/Button';
@@ -87,6 +88,15 @@ export const Header: React.FC = () => {
               aria-label="View recent official announcements"
             >
               Announcements
+            </Link>
+            <span className="text-navy-border">|</span>
+            <Link
+              to="/admin/login"
+              className="inline-flex items-center gap-1 hover:text-accent focus-ring text-slate-300 hover:underline transition-colors"
+              aria-label="Administrative Portal Login"
+            >
+              <Lock className="w-3 h-3 text-accent shrink-0" aria-hidden="true" />
+              <span>Admin Login</span>
             </Link>
           </div>
         </div>
