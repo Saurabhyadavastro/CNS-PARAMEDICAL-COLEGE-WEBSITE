@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Lock, Mail, Key, ArrowRight, AlertCircle, ArrowLeft, Database } from 'lucide-react';
+import { Lock, Mail, Key, ArrowRight, AlertCircle, ArrowLeft, ShieldCheck } from 'lucide-react';
 import { useAdminAuth } from '../AdminAuthContext';
-import { isSupabaseConfigured } from '../../lib/supabase';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Badge } from '../../components/ui/Badge';
@@ -145,15 +144,13 @@ export const AdminLogin: React.FC = () => {
             {/* Security Notes & Configuration Guide */}
             <div className="mt-6 pt-4 border-t border-border-subtle text-xs text-ink-muted space-y-2">
               <div className="flex items-center gap-1.5 font-semibold text-ink">
-                <Database className="w-3.5 h-3.5 text-brand" />
-                <span>Backend Status:</span>
-                <Badge variant={isSupabaseConfigured ? 'success' : 'warning'} size="sm">
-                  {isSupabaseConfigured ? 'Live Supabase Auth' : 'Local Preview Mode'}
-                </Badge>
+                <ShieldCheck className="w-3.5 h-3.5 text-brand" />
+                <span>Protected Portal:</span>
+                <span className="text-brand font-medium">Supabase Auth Session</span>
               </div>
 
               <p className="text-[11px] text-ink-light leading-relaxed">
-                Public user self-registration is permanently disabled. Only accounts added to the <code className="bg-surface px-1 py-0.5 rounded font-mono text-brand">admin_users</code> table with active credentials can access this workspace.
+                Public user self-registration is permanently disabled. Only staff accounts registered in the <code className="bg-surface px-1 py-0.5 rounded font-mono text-brand">admin_users</code> database table with active credentials can access this console.
               </p>
             </div>
           </CardContent>

@@ -9,7 +9,7 @@ import {
   RefreshCw,
   X
 } from 'lucide-react';
-import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { 
   fetchStaff as loadStaffFromStore, 
   saveStaff as persistStaff, 
@@ -163,7 +163,7 @@ export const AdminStaff: React.FC = () => {
 
     try {
       // 1. Upload photo to staff-photos bucket if new file selected
-      if (selectedFile && isSupabaseConfigured) {
+      if (selectedFile) {
         const fileExt = selectedFile.name.split('.').pop() || 'jpg';
         const cleanBase = selectedFile.name.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 20);
         const fileName = `${Date.now()}_${cleanBase}.${fileExt}`;

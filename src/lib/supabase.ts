@@ -1,17 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// Free tier public client. If credentials are empty during development or preview,
-// it gracefully logs a warning rather than throwing an unhandled exception.
-export const isSupabaseConfigured = Boolean(
-  supabaseUrl && 
-  supabaseAnonKey && 
-  !supabaseUrl.includes('your-project-id')
-);
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    'CRITICAL DATABASE CONFIGURATION ERROR: VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are missing from environment variables. All mock data, demo mode, and local fallbacks have been removed. Configure these variables in your deployment dashboard (or .env file) to connect to Supabase.'
+  );
+}
 
-export const supabase = createClient(
-  supabaseUrl || 'https://placeholder-cns-paramedical.supabase.co',
-  supabaseAnonKey || 'placeholder-anon-key'
-);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

@@ -12,29 +12,8 @@ export interface Notice {
   link_url?: string | null;
 }
 
-const fallbackNotices: Notice[] = [
-  {
-    id: 'fb-1',
-    title: 'Admissions Open for Session 2026–2027 in ANM, GNM & B.Sc. Nursing. Apply at the campus desk.',
-    category: 'Admissions',
-    published_at: new Date().toISOString(),
-  },
-  {
-    id: 'fb-2',
-    title: 'Orientation Schedule & Document Verification for First Year Batches (Monday to Saturday, 9:30 AM – 4:30 PM).',
-    category: 'Academic',
-    published_at: new Date().toISOString(),
-  },
-  {
-    id: 'fb-3',
-    title: 'Clinical Rotations & Hospital Postings Guidelines for Nursing Students in Kannauj district.',
-    category: 'Clinical',
-    published_at: new Date().toISOString(),
-  },
-];
-
 export const NoticeTicker: React.FC = () => {
-  const [notices, setNotices] = useState<Notice[]>(fallbackNotices);
+  const [notices, setNotices] = useState<Notice[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
@@ -56,18 +35,21 @@ export const NoticeTicker: React.FC = () => {
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
-  // Fetch from unified data store and subscribe to real-time changes
+  // Fetch strictly from Supabase via dataStore and subscribe to changes
   useEffect(() => {
     let isMounted = true;
 
     async function loadTickerNotices() {
       try {
         const data = await getNoticesData(true);
-        if (data && data.length > 0 && isMounted) {
-          setNotices(data.slice(0, 5));
+        if (isMounted) {
+          setNotices(data && data.length > 0 ? data.slice(0, 5) : []);
         }
       } catch (err) {
         console.warn('NoticeTicker fetch error:', err);
+        if (isMounted) {
+          setNotices([]);
+        }
       }
     }
 
@@ -101,7 +83,12 @@ export const NoticeTicker: React.FC = () => {
     setCurrentIndex((prev) => (prev + 1) % notices.length);
   };
 
-  const activeNotice = notices[currentIndex] || fallbackNotices[0];
+  // If no notices are loaded or database has no active notices, don't show fallback mock data
+  if (notices.length === 0) {
+    return null;
+  }
+
+  const activeNotice = notices[currentIndex] || notices[0];
 
   return (
     <div

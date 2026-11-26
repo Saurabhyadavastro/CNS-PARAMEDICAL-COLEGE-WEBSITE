@@ -8,10 +8,8 @@ import {
   PlusCircle, 
   RefreshCw 
 } from 'lucide-react';
-import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { 
-  fetchStaff, 
-  fetchNotices, 
   subscribeStaffChange, 
   subscribeNoticesChange 
 } from '../../lib/dataStore';
@@ -37,67 +35,41 @@ export const AdminDashboard: React.FC = () => {
   const fetchMetrics = async () => {
     setIsLoading(true);
     try {
-      if (isSupabaseConfigured) {
-        // 1. Enquiries count
-        const { data: enqData } = await supabase
-          .from('enquiries')
-          .select('id, status, name, phone, course, created_at')
-          .order('created_at', { ascending: false });
+      // 1. Enquiries count
+      const { data: enqData, error: enqError } = await supabase
+        .from('enquiries')
+        .select('id, status, name, phone, course, created_at')
+        .order('created_at', { ascending: false });
 
-        const allEnq = enqData || [];
-        const newCount = allEnq.filter((e) => e.status === 'new').length;
+      if (enqError) throw enqError;
 
-        // 2. Staff count
-        const { count: staffCount } = await supabase
-          .from('staff')
-          .select('*', { count: 'exact', head: true });
+      const allEnq = enqData || [];
+      const newCount = allEnq.filter((e) => e.status === 'new').length;
 
-        // 3. Active notices count
-        const { count: noticesCount } = await supabase
-          .from('notices')
-          .select('*', { count: 'exact', head: true })
-          .eq('is_active', true);
+      // 2. Staff count
+      const { count: staffCount, error: staffError } = await supabase
+        .from('staff')
+        .select('*', { count: 'exact', head: true });
 
-        setMetrics({
-          newEnquiries: newCount,
-          totalEnquiries: allEnq.length,
-          totalStaff: staffCount || 0,
-          activeNotices: noticesCount || 0,
-        });
-        setRecentEnquiries(allEnq.slice(0, 5));
-      } else {
-        // Fallback for preview reading real local store
-        const staffData = await fetchStaff();
-        const noticesData = await fetchNotices();
-        const activeNoticesCount = noticesData.filter((n) => n.is_active).length;
+      if (staffError) throw staffError;
 
-        // Get local enquiries if any
-        let localEnquiries: any[] = [];
-        try {
-          const raw = localStorage.getItem('cns_mock_enquiries');
-          if (raw) localEnquiries = JSON.parse(raw);
-        } catch (e) {}
+      // 3. Active notices count
+      const { count: noticesCount, error: noticesError } = await supabase
+        .from('notices')
+        .select('*', { count: 'exact', head: true })
+        .eq('is_active', true);
 
-        if (localEnquiries.length === 0) {
-          localEnquiries = [
-            { id: 'd-1', name: 'Pooja Verma', phone: '9876543210', course: 'ANM', status: 'new', created_at: new Date().toISOString() },
-            { id: 'd-2', name: 'Amit Kumar Singh', phone: '9123456789', course: 'B.Sc. Nursing', status: 'in_progress', created_at: new Date().toISOString() },
-            { id: 'd-3', name: 'Sunita Devi', phone: '9839000000', course: 'GNM', status: 'new', created_at: new Date().toISOString() },
-          ];
-        }
+      if (noticesError) throw noticesError;
 
-        const newCount = localEnquiries.filter((e) => e.status === 'new').length;
-
-        setMetrics({
-          newEnquiries: newCount,
-          totalEnquiries: localEnquiries.length,
-          totalStaff: staffData.length,
-          activeNotices: activeNoticesCount,
-        });
-        setRecentEnquiries(localEnquiries.slice(0, 5));
-      }
+      setMetrics({
+        newEnquiries: newCount,
+        totalEnquiries: allEnq.length,
+        totalStaff: staffCount || 0,
+        activeNotices: noticesCount || 0,
+      });
+      setRecentEnquiries(allEnq.slice(0, 5));
     } catch (err) {
-      console.warn('Dashboard metrics fetch notice:', err);
+      console.error('Dashboard metrics fetch error from Supabase:', err);
     } finally {
       setIsLoading(false);
     }

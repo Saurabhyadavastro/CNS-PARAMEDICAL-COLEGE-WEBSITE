@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, AlertCircle, Phone, Mail, User, GraduationCap, MapPin, Percent } from 'lucide-react';
-import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
@@ -188,26 +188,18 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         message: formData.message.trim() || null,
       };
 
-      if (isSupabaseConfigured) {
-        const { error } = await supabase.from('enquiries').insert([payload]);
-        if (error) {
-          throw new Error(error.message || 'Database error occurred while submitting enquiry.');
-        }
-      } else {
-        // Save to persistent local store so /admin/enquiries immediately reflects it
-        try {
-          const raw = localStorage.getItem('cns_mock_enquiries');
-          const list = raw ? JSON.parse(raw) : [];
-          list.unshift({
-            id: `enq-${Date.now()}`,
-            ...payload,
-            status: 'new',
-            created_at: new Date().toISOString(),
-          });
-          localStorage.setItem('cns_mock_enquiries', JSON.stringify(list));
-        } catch (e) {
-          console.warn('Error saving local enquiry:', e);
-        }
+      // Direct insertion to Supabase enquiries table
+      const { data, error } = await supabase
+        .from('enquiries')
+        .insert([payload])
+        .select();
+
+      if (error) {
+        throw new Error(error.message || 'Database error occurred while submitting enquiry.');
+      }
+
+      if (!data || data.length === 0) {
+        throw new Error('Database did not record your enquiry. Please retry or contact the admission desk directly.');
       }
 
       // Success workflow

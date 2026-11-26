@@ -9,7 +9,7 @@ import {
   CheckCircle2, 
   PhoneCall 
 } from 'lucide-react';
-import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Select } from '../../components/ui/Select';
@@ -56,73 +56,19 @@ export const AdminEnquiries: React.FC = () => {
   const fetchEnquiries = async () => {
     setIsLoading(true);
     try {
-      if (isSupabaseConfigured) {
-        const { data, error } = await supabase
-          .from('enquiries')
-          .select('*')
-          .order('created_at', { ascending: false });
+      const { data, error } = await supabase
+        .from('enquiries')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-        if (error) throw error;
-        setEnquiries(data || []);
-      } else {
-        const local = localStorage.getItem('cns_mock_enquiries');
-        if (local) {
-          setEnquiries(JSON.parse(local));
-        } else {
-          const sample: EnquiryItem[] = [
-            {
-              id: 'enq-1',
-              name: 'Pooja Verma',
-              phone: '9876543210',
-              email: 'pooja.verma@example.com',
-              course: 'ANM',
-              last_qualification: '10+2 Arts',
-              percentage: 64.5,
-              city: 'Kannauj',
-              message: 'Inquiring about hostel facilities, bus transport from Samdhan market, and admission deadlines.',
-              status: 'new',
-              admin_notes: 'Initial inquiry received via mobile website.',
-              created_at: new Date(Date.now() - 3600000 * 4).toISOString(),
-            },
-            {
-              id: 'enq-2',
-              name: 'Amit Kumar Singh',
-              phone: '9123456789',
-              email: 'amit.singh@example.com',
-              course: 'B.Sc. Nursing',
-              last_qualification: '10+2 Science PCB',
-              percentage: 72.8,
-              city: 'Gursahaiganj',
-              message: 'Looking for B.Sc. Nursing admission criteria, semester fee breakdown, and hospital tie-ups.',
-              status: 'in_progress',
-              admin_notes: 'Spoke with candidate father on 26 Nov. Sent prospectus copy.',
-              created_at: new Date(Date.now() - 86400000).toISOString(),
-            },
-            {
-              id: 'enq-3',
-              name: 'Sunita Devi',
-              phone: '9839123456',
-              email: null,
-              course: 'GNM',
-              last_qualification: '10+2 Biology',
-              percentage: 58.0,
-              city: 'Samdhan',
-              message: 'Seeking direct seat admission in GNM diploma batch.',
-              status: 'resolved',
-              admin_notes: 'Admitted in batch 2026-27. Documents verified.',
-              created_at: new Date(Date.now() - 86400000 * 3).toISOString(),
-            },
-          ];
-          setEnquiries(sample);
-          localStorage.setItem('cns_mock_enquiries', JSON.stringify(sample));
-        }
-      }
+      if (error) throw error;
+      setEnquiries(data || []);
     } catch (err: any) {
       console.error('Fetch enquiries error:', err);
       addToast({
         type: 'error',
         title: 'Error Loading Enquiries',
-        message: err?.message || 'Could not fetch admission enquiries.',
+        message: err?.message || 'Could not fetch admission enquiries from database.',
       });
     } finally {
       setIsLoading(false);
@@ -144,26 +90,19 @@ export const AdminEnquiries: React.FC = () => {
     setIsUpdating(true);
 
     try {
-      if (isSupabaseConfigured) {
-        const { error } = await supabase
-          .from('enquiries')
-          .update({
-            status: detailStatus,
-            admin_notes: adminNotes.trim() || null,
-          })
-          .eq('id', selectedEnquiry.id);
+      const { data, error } = await supabase
+        .from('enquiries')
+        .update({
+          status: detailStatus,
+          admin_notes: adminNotes.trim() || null,
+        })
+        .eq('id', selectedEnquiry.id)
+        .select();
 
-        if (error) throw error;
-      }
+      if (error) throw error;
 
-      const updated = enquiries.map((item) =>
-        item.id === selectedEnquiry.id
-          ? { ...item, status: detailStatus, admin_notes: adminNotes.trim() || null }
-          : item
-      );
-      setEnquiries(updated);
-      if (!isSupabaseConfigured) {
-        localStorage.setItem('cns_mock_enquiries', JSON.stringify(updated));
+      if (!data || data.length === 0) {
+        throw new Error('Update failed: Enquiry record not found in database.');
       }
 
       addToast({
@@ -173,6 +112,7 @@ export const AdminEnquiries: React.FC = () => {
       });
 
       setSelectedEnquiry(null);
+      await fetchEnquiries();
     } catch (err: any) {
       console.error('Update enquiry error:', err);
       addToast({
