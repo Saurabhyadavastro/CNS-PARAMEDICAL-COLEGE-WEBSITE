@@ -290,6 +290,16 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ courseIdOverride }) 
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-xs sm:text-sm">
+                {course.image && (
+                  <div className="w-full h-48 rounded-lg overflow-hidden border border-border-subtle mb-3 shadow-sm">
+                    <img
+                      src={course.image}
+                      alt={`${course.title} clinical and nursing demonstration at Indian medical college`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
                 <div>
                   <span className="text-ink-light block text-xs">Course Duration:</span>
                   <span className="font-bold text-ink">{course.duration}</span>

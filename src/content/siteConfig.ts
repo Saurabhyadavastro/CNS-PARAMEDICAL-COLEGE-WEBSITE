@@ -22,6 +22,7 @@ export interface CourseDetail {
   careerProspects: string[];
   faqs: FAQItem[];
   path: string;
+  image?: string;
 }
 
 export interface SiteConfig {
@@ -78,6 +79,7 @@ export interface SiteConfig {
     taglineHindi?: string;
     description: string;
     icon: string;
+    image?: string;
     keyFeatures: string[];
   }[];
 }
@@ -141,6 +143,7 @@ export const siteConfig: SiteConfig = {
       feesPerYear: websiteCopy.courses.anm.fees,
       affiliation: websiteCopy.courses.anm.approvalStatus,
       path: '/courses/anm',
+      image: '/images/courses/course-anm.jpg',
       highlights: websiteCopy.courses.anm.curriculumHighlights,
       careerProspects: websiteCopy.courses.anm.careerOptions,
       faqs: websiteCopy.courses.anm.faqs,
@@ -157,6 +160,7 @@ export const siteConfig: SiteConfig = {
       feesPerYear: websiteCopy.courses.gnm.fees,
       affiliation: websiteCopy.courses.gnm.approvalStatus,
       path: '/courses/gnm',
+      image: '/images/courses/course-gnm.jpg',
       highlights: websiteCopy.courses.gnm.curriculumHighlights,
       careerProspects: websiteCopy.courses.gnm.careerOptions,
       faqs: websiteCopy.courses.gnm.faqs,
@@ -173,6 +177,7 @@ export const siteConfig: SiteConfig = {
       feesPerYear: websiteCopy.courses.bscNursing.fees,
       affiliation: websiteCopy.courses.bscNursing.approvalStatus,
       path: '/courses/bsc-nursing',
+      image: '/images/courses/course-bsc.jpg',
       highlights: websiteCopy.courses.bscNursing.curriculumHighlights,
       careerProspects: websiteCopy.courses.bscNursing.careerOptions,
       faqs: websiteCopy.courses.bscNursing.faqs,
@@ -192,6 +197,13 @@ export const siteConfig: SiteConfig = {
     taglineHindi: fac.taglineHindi,
     description: fac.shortDescription,
     keyFeatures: fac.keyFeatures,
+    image: fac.id === 'library'
+      ? '/images/gallery/library/library-reading-hall.jpg'
+      : fac.id === 'laboratory'
+      ? '/images/gallery/laboratory/lab-nursing-foundation.jpg'
+      : fac.id === 'classrooms'
+      ? '/images/gallery/classrooms/classroom-lecture-hall-1.jpg'
+      : '/images/gallery/events/event-lamp-lighting.jpg',
     icon: fac.id === 'library' ? 'BookOpen' : fac.id === 'laboratory' ? 'FlaskConical' : fac.id === 'classrooms' ? 'Monitor' : 'Building2',
   })),
 };

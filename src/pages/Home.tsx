@@ -156,11 +156,24 @@ export const Home: React.FC = () => {
             <Card
               key={course.id}
               variant="interactive"
-              className="flex flex-col h-full border-t-4 border-t-brand hover:border-t-brand-dark"
+              className="flex flex-col h-full border-t-4 border-t-brand hover:border-t-brand-dark overflow-hidden"
             >
+              {course.image && (
+                <div className="w-full h-48 overflow-hidden relative border-b border-border-subtle bg-surface-muted">
+                  <img
+                    src={course.image}
+                    alt={`${course.title} nursing and clinical training`}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 right-3">
+                    <Badge variant="navy">{course.code}</Badge>
+                  </div>
+                </div>
+              )}
               <CardHeader>
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <Badge variant="brand">{course.code}</Badge>
+                  <span className="text-xs font-semibold text-brand font-mono">{course.code}</span>
                   <span className="text-xs font-semibold text-ink-muted flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                     {course.duration}
@@ -172,7 +185,7 @@ export const Home: React.FC = () => {
               </CardHeader>
               <CardContent className="flex-1 flex flex-col justify-between">
                 <div>
-                  <p className="text-xs sm:text-sm text-ink-muted mb-4 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-ink-muted mb-4 leading-relaxed line-clamp-3">
                     {course.shortDescription}
                   </p>
                   
@@ -222,16 +235,28 @@ export const Home: React.FC = () => {
           {siteConfig.facilities.map((fac, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-xl border border-border-subtle bg-surface hover:shadow-card hover:border-brand/40 transition-all flex flex-col"
+              className="rounded-xl border border-border-subtle bg-surface hover:shadow-card hover:border-brand/40 transition-all flex flex-col overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-lg bg-brand-faint text-brand flex items-center justify-center mb-4 shrink-0">
-                {idx === 0 && <BookOpen className="w-6 h-6" aria-hidden="true" />}
-                {idx === 1 && <FlaskConical className="w-6 h-6" aria-hidden="true" />}
-                {idx === 2 && <Monitor className="w-6 h-6" aria-hidden="true" />}
-                {idx === 3 && <Building2 className="w-6 h-6" aria-hidden="true" />}
+              {fac.image && (
+                <div className="w-full h-36 overflow-hidden bg-surface-muted relative border-b border-border-subtle">
+                  <img
+                    src={fac.image}
+                    alt={`${fac.title} facility at Indian nursing college`}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-2 left-2 p-1.5 rounded-md bg-navy-dark/80 backdrop-blur-sm text-accent">
+                    {idx === 0 && <BookOpen className="w-4 h-4" aria-hidden="true" />}
+                    {idx === 1 && <FlaskConical className="w-4 h-4" aria-hidden="true" />}
+                    {idx === 2 && <Monitor className="w-4 h-4" aria-hidden="true" />}
+                    {idx === 3 && <Building2 className="w-4 h-4" aria-hidden="true" />}
+                  </div>
+                </div>
+              )}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="font-bold text-ink text-base mb-2">{fac.title}</h3>
+                <p className="text-xs text-ink-muted leading-relaxed flex-1">{fac.description}</p>
               </div>
-              <h3 className="font-bold text-ink text-base mb-2">{fac.title}</h3>
-              <p className="text-xs text-ink-muted leading-relaxed flex-1">{fac.description}</p>
             </div>
           ))}
         </div>

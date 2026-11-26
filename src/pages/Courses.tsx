@@ -97,6 +97,17 @@ export const Courses: React.FC = () => {
 
                 {/* Right Action & Metadata Panel */}
                 <div className="p-5 bg-surface-muted rounded-lg border border-border-subtle flex flex-col justify-between h-full">
+                  {course.image && (
+                    <div className="w-full h-40 rounded-lg overflow-hidden border border-border-subtle mb-4 relative shadow-sm">
+                      <img
+                        src={course.image}
+                        alt={`${course.title} clinical simulation and training`}
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
                   <div className="space-y-3 text-xs sm:text-sm">
                     <div>
                       <span className="text-ink-light block text-xs">Affiliation & Approval:</span>

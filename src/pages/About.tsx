@@ -5,10 +5,6 @@ import {
   MapPin, 
   CheckCircle2, 
   ShieldCheck, 
-  Building2, 
-  BookOpen, 
-  FlaskConical, 
-  Monitor,
   HeartHandshake
 } from 'lucide-react';
 import { siteConfig } from '../content/siteConfig';
@@ -168,30 +164,42 @@ export const About: React.FC = () => {
           {websiteCopy.facilities.map((fac) => (
             <div
               key={fac.id}
-              className="p-5 rounded-xl border border-border-subtle bg-surface hover:shadow-card hover:border-brand/40 transition-all flex flex-col"
+              className="rounded-xl border border-border-subtle bg-surface hover:shadow-card hover:border-brand/40 transition-all flex flex-col overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-lg bg-brand-faint text-brand flex items-center justify-center mb-3 shrink-0">
-                {fac.id === 'library' && <BookOpen className="w-6 h-6" aria-hidden="true" />}
-                {fac.id === 'laboratory' && <FlaskConical className="w-6 h-6" aria-hidden="true" />}
-                {fac.id === 'classrooms' && <Monitor className="w-6 h-6" aria-hidden="true" />}
-                {fac.id === 'multipurpose-hall' && <Building2 className="w-6 h-6" aria-hidden="true" />}
+              <div className="w-full h-40 overflow-hidden bg-surface-muted relative border-b border-border-subtle">
+                <img
+                  src={
+                    fac.id === 'library'
+                      ? '/images/gallery/library/library-reading-hall.jpg'
+                      : fac.id === 'laboratory'
+                      ? '/images/gallery/laboratory/lab-nursing-foundation.jpg'
+                      : fac.id === 'classrooms'
+                      ? '/images/gallery/classrooms/classroom-lecture-hall-1.jpg'
+                      : '/images/gallery/events/event-lamp-lighting.jpg'
+                  }
+                  alt={`${fac.title} facility at Indian nursing institution`}
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="absolute top-2 right-2">
+                  <Badge variant="navy">{fac.taglineHindi || fac.title}</Badge>
+                </div>
               </div>
-              <div className="text-2xs text-brand font-bold uppercase tracking-wider mb-1">
-                {fac.taglineHindi}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="font-bold text-ink text-base mb-2">{fac.title}</h3>
+                <p className="text-xs text-ink-muted leading-relaxed mb-4 flex-1">
+                  {fac.shortDescription}
+                </p>
+                
+                <ul className="space-y-1.5 text-2xs text-ink border-t border-border-subtle pt-3">
+                  {fac.keyFeatures.slice(0, 2).map((feat, fIdx) => (
+                    <li key={fIdx} className="flex items-start gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-brand shrink-0 mt-0.5" aria-hidden="true" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="font-bold text-ink text-base mb-2">{fac.title}</h3>
-              <p className="text-xs text-ink-muted leading-relaxed mb-4 flex-1">
-                {fac.shortDescription}
-              </p>
-              
-              <ul className="space-y-1.5 text-2xs text-ink border-t border-border-subtle pt-3">
-                {fac.keyFeatures.slice(0, 2).map((feat, fIdx) => (
-                  <li key={fIdx} className="flex items-start gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-brand shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>
