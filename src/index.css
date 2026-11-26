@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Mobile-first base text size: 16px on mobile, responsive to 14px base on md screens where specified */
+    font-size: 16px;
+    scroll-behavior: smooth;
+    color: #171717;
+  }
+
+  @screen md {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  body {
+    @apply bg-surface text-ink antialiased;
+    min-height: 100vh;
+  }
+
+  /* Visible focus ring rule for WCAG 2.2 AA keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #4169e1;
+    outline-offset: 2px;
+  }
+}
+
+/* Custom utility for high-contrast focus rings */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
+}
+
+.focus-ring-navy {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-navy-dark;
+}

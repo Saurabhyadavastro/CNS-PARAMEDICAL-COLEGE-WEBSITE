@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/schema/v1/ard.json",
+  "name": "C.N.S. Paramedical and Nursing College",
+  "description": "Official website and admissions information for C.N.S. Paramedical and Nursing College, Kannauj, Uttar Pradesh.",
+  "url": "https://cnsparamedical.in",
+  "contact": {
+    "organization": "C.N.S. Paramedical and Nursing College",
+    "location": "Lakhaiyamau, Gursahaiganj Road, Samdhan, Kannauj, Uttar Pradesh 209735"
+  }
+}
