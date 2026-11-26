@@ -79,7 +79,7 @@ export const SEO: React.FC<SEOProps> = ({
       name: siteConfig.collegeName,
       alternateName: 'C.N.S. Paramedical College',
       url: typeof window !== 'undefined' ? window.location.origin : 'https://cnsparamedical.in',
-      logo: typeof window !== 'undefined' ? `${window.location.origin}/images/campus/gate.jpg` : '/images/campus/gate.jpg',
+      logo: typeof window !== 'undefined' ? `${window.location.origin}/images/Logos/College Logo.png` : '/images/Logos/College Logo.png',
       image: fullImageUrl,
       description: siteConfig.tagline,
       foundingDate: '2022',

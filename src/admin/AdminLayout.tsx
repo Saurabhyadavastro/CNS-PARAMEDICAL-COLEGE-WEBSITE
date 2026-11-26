@@ -9,8 +9,7 @@ import {
   ExternalLink, 
   Menu, 
   X, 
-  ShieldCheck,
-  GraduationCap
+  ShieldCheck
 } from 'lucide-react';
 import { useAdminAuth } from './AdminAuthContext';
 import { Button } from '../components/ui/Button';
@@ -36,8 +35,12 @@ export const AdminLayout: React.FC = () => {
           {/* Brand Logo / Portal Label */}
           <div className="flex items-center gap-3">
             <Link to="/admin" className="flex items-center gap-2.5 focus-ring-navy rounded py-1 pr-2">
-              <div className="w-9 h-9 rounded bg-brand text-white flex items-center justify-center font-bold">
-                <GraduationCap className="w-5 h-5" aria-hidden="true" />
+              <div className="w-9 h-9 rounded bg-white flex items-center justify-center p-0.5 shadow-sm border border-navy-border shrink-0">
+                <img
+                  src="/images/Logos/College Logo.png"
+                  alt="C.N.S. College Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="text-left">
                 <span className="font-extrabold text-sm sm:text-base text-white block leading-tight">

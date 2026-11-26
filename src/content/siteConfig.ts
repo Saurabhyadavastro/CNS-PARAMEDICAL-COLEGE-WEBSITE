@@ -32,6 +32,8 @@ export interface SiteConfig {
   hindiTagline: string;
   establishedYear: number;
   accreditationStatus: string;
+  logo: string;
+  facultyLogo: string;
   contact: {
     address: {
       line1: string;
@@ -91,6 +93,8 @@ export const siteConfig: SiteConfig = {
   hindiTagline: websiteCopy.institute.hindiTagline,
   establishedYear: websiteCopy.institute.establishedYear,
   accreditationStatus: '[TO_CONFIRM: UP State Medical Faculty / Indian Nursing Council Recognition]',
+  logo: '/images/Logos/College Logo.png',
+  facultyLogo: '/images/Logos/State Medical Faculty logo.jpg',
   
   contact: {
     address: {

@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  GraduationCap, 
   MapPin, 
   Phone, 
   Mail, 
   Clock, 
   ChevronRight, 
   ExternalLink,
-  ShieldCheck,
   Building
 } from 'lucide-react';
 import { siteConfig } from '../../content/siteConfig';
@@ -23,8 +21,12 @@ export const Footer: React.FC = () => {
           {/* Col 1: About Institution */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-md bg-brand text-white flex items-center justify-center font-bold">
-                <GraduationCap className="w-6 h-6 text-white" aria-hidden="true" />
+              <div className="w-11 h-11 rounded-lg bg-white flex items-center justify-center p-1 shadow-sm border border-navy-border shrink-0">
+                <img
+                  src="/images/Logos/College Logo.png"
+                  alt="C.N.S. Paramedical & Nursing College Emblem"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-white font-extrabold text-base leading-tight">
                 {siteConfig.collegeName}
@@ -34,12 +36,16 @@ export const Footer: React.FC = () => {
               {siteConfig.tagline}. Established in 2022 to provide comprehensive nursing education and paramedic training in Kannauj, Uttar Pradesh.
             </p>
             <div className="p-3 bg-navy-surface rounded-md border border-navy-border text-xs text-slate-300">
-              <div className="flex items-center gap-2 text-accent font-semibold mb-1">
-                <ShieldCheck className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
-                <span>Regulatory Status</span>
+              <div className="flex items-center gap-2.5 text-accent font-semibold mb-1.5">
+                <img
+                  src="/images/Logos/State Medical Faculty logo.jpg"
+                  alt="Uttar Pradesh State Medical Faculty Logo"
+                  className="w-6 h-6 rounded object-contain bg-white p-0.5 shrink-0"
+                />
+                <span>U.P. State Medical Faculty Recognized</span>
               </div>
-              <p className="text-slate-400">
-                {siteConfig.accreditationStatus}
+              <p className="text-slate-400 text-xs">
+                Courses adhering to statutory state nursing & paramedic curriculum standards.
               </p>
             </div>
           </div>

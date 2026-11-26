@@ -6,7 +6,6 @@ import {
   MapPin, 
   Menu, 
   X, 
-  GraduationCap, 
   ChevronDown, 
   AlertCircle,
   FileText,
@@ -110,8 +109,12 @@ export const Header: React.FC = () => {
             to="/"
             className="flex items-center gap-3 focus-ring rounded-md py-1 pr-2 group"
           >
-            <div className="w-12 h-12 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-xl shadow-md group-hover:bg-brand-dark transition-colors">
-              <GraduationCap className="w-7 h-7 text-white" aria-hidden="true" />
+            <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center p-0.5 shadow-sm border border-border-subtle group-hover:border-brand/40 transition-colors shrink-0">
+              <img
+                src="/images/Logos/College Logo.png"
+                alt="C.N.S. Paramedical & Nursing College Official Emblem"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="text-left">
               <div className="text-base sm:text-lg font-extrabold text-navy-dark leading-tight group-hover:text-brand transition-colors">
@@ -257,7 +260,18 @@ export const Header: React.FC = () => {
             aria-label="Mobile Navigation Drawer"
           >
             <div className="flex items-center justify-between pb-4 border-b border-border-subtle">
-              <span className="font-bold text-navy-dark text-base">Navigation</span>
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded bg-surface flex items-center justify-center p-0.5 border border-border-subtle shrink-0">
+                  <img
+                    src="/images/Logos/College Logo.png"
+                    alt="C.N.S. College Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="font-bold text-navy-dark text-sm sm:text-base leading-tight">
+                  C.N.S. College
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}

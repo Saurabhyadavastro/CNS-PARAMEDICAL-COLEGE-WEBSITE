@@ -223,11 +223,43 @@ export const About: React.FC = () => {
       >
         <div className="max-w-3xl mx-auto">
           <Card variant="surface-light" padding="lg" className="border-t-4 border-t-brand">
-            <div className="flex items-center gap-3 mb-4">
-              <ShieldCheck className="w-6 h-6 text-brand shrink-0" aria-hidden="true" />
-              <h3 className="text-lg font-bold text-ink">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-border-subtle">
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-lg bg-surface flex items-center justify-center p-1 border border-border-subtle shadow-xs shrink-0">
+                  <img
+                    src="/images/Logos/College Logo.png"
+                    alt="C.N.S. College Official Crest"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-ink">
+                    C.N.S. Paramedical & Nursing College
+                  </h3>
+                  <p className="text-xs text-ink-muted">
+                    Lakhaiyamau, Gursahaiganj Road, Samdhan, Kannauj (U.P.)
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 bg-surface p-2.5 rounded-lg border border-border-subtle shrink-0">
+                <img
+                  src="/images/Logos/State Medical Faculty logo.jpg"
+                  alt="Uttar Pradesh State Medical Faculty"
+                  className="w-10 h-10 rounded object-contain shrink-0"
+                />
+                <div className="text-left">
+                  <div className="text-2xs uppercase tracking-wide font-bold text-accent-ink">Recognizing Body</div>
+                  <div className="text-xs font-bold text-ink">U.P. State Medical Faculty</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 mb-3">
+              <ShieldCheck className="w-5 h-5 text-brand shrink-0" aria-hidden="true" />
+              <h4 className="text-sm font-bold text-ink">
                 Regulatory Affiliation & Approvals Record
-              </h3>
+              </h4>
             </div>
             
             <p className="text-xs sm:text-sm text-ink-muted leading-relaxed mb-6">

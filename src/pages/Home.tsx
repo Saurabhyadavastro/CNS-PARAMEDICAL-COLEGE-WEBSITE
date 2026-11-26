@@ -11,7 +11,8 @@ import {
   ArrowRight, 
   Send,
   Eye,
-  Camera
+  Camera,
+  ShieldCheck
 } from 'lucide-react';
 import { siteConfig } from '../content/siteConfig';
 import { featuredGalleryImages } from '../content/gallery';
@@ -95,6 +96,48 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Accreditation & Institutional Trust Bar */}
+      <div className="bg-surface-light border-y border-border-subtle py-4 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center p-1 border border-border-subtle shadow-xs shrink-0">
+              <img
+                src="/images/Logos/College Logo.png"
+                alt="C.N.S. Paramedical & Nursing College Emblem"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <div className="text-2xs font-bold uppercase tracking-wider text-brand">Institutional Emblem</div>
+              <div className="text-xs sm:text-sm font-extrabold text-navy-dark leading-tight">C.N.S. Paramedical & Nursing College</div>
+              <div className="text-2xs text-ink-muted">Samdhan, Kannauj · Est. 2022</div>
+            </div>
+          </div>
+
+          <div className="hidden md:block h-8 w-px bg-border-subtle" />
+
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center p-1 border border-border-subtle shadow-xs shrink-0">
+              <img
+                src="/images/Logos/State Medical Faculty logo.jpg"
+                alt="Uttar Pradesh State Medical Faculty Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <div className="text-2xs font-bold uppercase tracking-wider text-accent-ink">Regulatory Recognition</div>
+              <div className="text-xs sm:text-sm font-extrabold text-navy-dark leading-tight">U.P. State Medical Faculty, Lucknow</div>
+              <div className="text-2xs text-ink-muted">State Paramedical & Nursing Regulatory Body</div>
+            </div>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-2 text-xs text-ink-muted bg-surface py-2 px-3 rounded-md border border-border-subtle">
+            <ShieldCheck className="w-4 h-4 text-brand shrink-0" aria-hidden="true" />
+            <span>Adhering to Indian Nursing Council & State Medical Faculty Norms</span>
+          </div>
+        </div>
+      </div>
 
       {/* About Snippet Section */}
       <Section

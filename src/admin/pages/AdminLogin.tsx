@@ -68,8 +68,12 @@ export const AdminLogin: React.FC = () => {
           <span>Return to College Website</span>
         </Link>
 
-        <div className="w-14 h-14 rounded-xl bg-brand text-white mx-auto flex items-center justify-center shadow-lg mb-3">
-          <Lock className="w-7 h-7" aria-hidden="true" />
+        <div className="w-20 h-20 rounded-2xl bg-white p-2 mx-auto flex items-center justify-center shadow-xl mb-4 border border-navy-border/60">
+          <img
+            src="/images/Logos/College Logo.png"
+            alt="C.N.S. Paramedical & Nursing College Official Emblem"
+            className="w-full h-full object-contain"
+          />
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
           C.N.S. Staff Administration
@@ -83,7 +87,10 @@ export const AdminLogin: React.FC = () => {
         <Card variant="default" padding="lg" className="border-t-4 border-t-brand shadow-2xl">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <Badge variant="navy" size="sm">Staff Sign-In</Badge>
+              <Badge variant="navy" size="sm" className="inline-flex items-center gap-1">
+                <Lock className="w-3 h-3 text-accent" aria-hidden="true" />
+                <span>Staff Sign-In</span>
+              </Badge>
               <span className="text-[11px] text-ink-light">Password Authentication Only</span>
             </div>
           </CardHeader>
