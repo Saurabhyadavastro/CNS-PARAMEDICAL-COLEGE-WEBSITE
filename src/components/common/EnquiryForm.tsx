@@ -415,7 +415,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           <div className="pt-2">
             <Button
               type="submit"
-              variant="primary"
+              variant="accent"
               size="lg"
               className="w-full shadow-md"
               isLoading={isSubmitting}

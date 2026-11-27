@@ -327,9 +327,9 @@ export const CourseDetail: React.FC<CourseDetailProps> = ({ courseIdOverride }) 
                   >
                     Submit Online Inquiry
                   </Button>
-                  <a href={`tel:${siteConfig.contact.phone}`} className="w-full">
+                  <a href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`} className="w-full">
                     <Button variant="secondary" size="md" className="w-full" leftIcon={<PhoneCall className="w-4 h-4" aria-hidden="true" />}>
-                      Call Admissions Desk
+                      Call Admissions Desk ({siteConfig.contact.phone})
                     </Button>
                   </a>
                 </div>

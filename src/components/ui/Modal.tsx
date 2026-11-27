@@ -90,7 +90,7 @@ export const Modal: React.FC<ModalProps> = ({
           {/* Header */}
           <div className="bg-surface px-6 pt-5 pb-4 sm:p-6 border-b border-border-subtle flex items-start justify-between">
             <div>
-              <h3 id={titleId} className="text-xl font-bold text-ink leading-tight">
+              <h3 id={titleId} className="text-xl font-bold text-navy leading-tight">
                 {title}
               </h3>
               {description && (

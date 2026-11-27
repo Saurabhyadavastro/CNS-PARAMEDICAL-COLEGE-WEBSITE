@@ -22,7 +22,8 @@ export const Badge: React.FC<BadgeProps> = ({
   // Colors strictly follow semantic AA compliant pairs (no white text on light yellow)
   const variantStyles = {
     brand: 'bg-brand-faint text-brand-dark border border-brand/30',
-    accent: 'bg-accent-soft text-accent-ink border border-accent/40',
+    accent: 'bg-accent-soft text-accent-ink border border-accent-rust/40',
+    rust: 'bg-accent-soft text-accent-rust border border-accent-rust/50',
     success: 'bg-status-success-soft text-status-success border border-status-success/30',
     warning: 'bg-status-warning-soft text-status-warning border border-status-warning/30',
     neutral: 'bg-surface-muted text-ink-muted border border-border-subtle',

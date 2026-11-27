@@ -85,7 +85,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 'lab-02',
     src: '/images/gallery/laboratory/lab-anatomy-physiology.jpg',
-    alt: 'Anatomy and physiology demonstration lab with 3D models and skeletal frameworks',
+    alt: 'Anatomy and physiology demonstration lab with Indian nursing students practicing on anatomical simulation models',
     caption: 'Anatomy & Physiology Demonstration Lab',
     category: 'laboratory',
     categoryName: 'Laboratory',
@@ -131,7 +131,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 'evt-01',
     src: '/images/gallery/events/event-lamp-lighting.jpg',
-    alt: 'Florence Nightingale lamp lighting and oath ceremony for nursing students in the Multipurpose Hall',
+    alt: 'Florence Nightingale lamp lighting and oath ceremony with Indian nursing students in white uniform taking oath',
     caption: 'Nightingale Lamp Lighting & Oath Ceremony',
     category: 'events',
     categoryName: 'Events (Multipurpose Hall programs)',
@@ -149,7 +149,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 'evt-03',
     src: '/images/gallery/events/event-community-health-camp.jpg',
-    alt: 'Community health camp workshop and rural clinical screening symposium in Samdhan',
+    alt: 'Community health camp workshop and rural clinical screening outreach in Uttar Pradesh',
     caption: 'Community Health Camp & Outreach Symposium',
     category: 'events',
     categoryName: 'Events (Multipurpose Hall programs)',

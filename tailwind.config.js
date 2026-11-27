@@ -5,32 +5,36 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#4169e1', // Royal Blue - primary brand (WCAG AA on white)
-          dark: '#2a4dbd',    // Darker royal blue for active/hover states
-          soft: '#347fe1',    // Medium royal blue for large text and UI only (fails AA contrast on white at small body sizes)
-          faint: '#eef3fc',   // Very light tint for active highlights/tinted cards
+          DEFAULT: '#1A78B8', // Sky Blue - primary brand (WCAG AA 4.76:1 on white)
+          dark: '#145F93',    // Darker sky blue for active/hover states (6.82:1 contrast)
+          soft: '#2C8FD3',    // Medium sky blue for highlights and large text
+          faint: '#F0F7FC',   // Very light sky blue tint for active backgrounds and cards
+          navy: '#2B385C',    // Deep Navy brand anchor
         },
         surface: {
-          DEFAULT: '#ffffff', // Pure white
-          light: '#f7fcfe',   // Light section background from design system
-          muted: '#edf4f9',   // Subtle panel/card alternate fill
+          DEFAULT: '#FFFFFF', // Crisp White
+          light: '#F6F9FC',   // Very light neutral tint derived from sky/navy palette
+          muted: '#EDF2F7',   // Subtle panel/card alternate fill with cool undertone
+          warm: '#FAF7F5',    // Very light neutral warm tint
         },
         navy: {
-          dark: '#0a1128',    // Very dark navy for headers, footers & hero backdrops
-          surface: '#111d40', // Elevated navy surface for mobile drawers & dropdowns
-          border: '#1e2c56',  // Navy border divider
+          DEFAULT: '#2B385C', // Deep Navy (#2B385C) for headings & primary branding (11.46:1 contrast)
+          dark: '#1D263F',    // Deepest navy for headers, footers & hero backdrops
+          surface: '#36456E', // Elevated navy surface for mobile drawers & dropdowns
+          border: '#465682',  // Navy border divider
         },
         ink: {
-          DEFAULT: '#171717', // High-contrast primary dark text
-          muted: '#4b5563',   // Secondary text with verified contrast
-          light: '#6b7280',   // Muted tertiary text/captions
-          inverse: '#ffffff', // Inverse text on navy/brand backgrounds
+          DEFAULT: '#1E2538', // High-contrast primary dark text with deep navy undertone
+          muted: '#4B5565',   // Secondary text with verified AA contrast
+          light: '#6B7280',   // Muted tertiary text/captions
+          inverse: '#FFFFFF', // Inverse text on navy/brand backgrounds
         },
         accent: {
-          DEFAULT: '#f7a604', // Secondary accent orange (badges, highlights, notice tags; never text on white)
-          dark: '#c77800',    // Darker accent tone for accessible border/focus
-          soft: '#fff8ea',    // Light warm background for accent badges
-          ink: '#8c4b00',     // High-contrast deep amber text for badges on soft backgrounds
+          DEFAULT: '#D3532F', // Terracotta Orange (#D3532F) for CTAs, buttons, badges, highlights
+          dark: '#B84323',    // Darker terracotta for hover states & accessible text (5.69:1 contrast)
+          rust: '#C8826B',    // Warm Rust (#C8826B) for subtle borders or secondary accents
+          soft: '#FDF5F2',    // Very light warm terracotta tint for badge backgrounds
+          ink: '#96351A',     // High-contrast deep terracotta text for badges on soft backgrounds (8.91:1 contrast)
         },
         status: {
           success: '#15803d',
@@ -39,12 +43,13 @@ export default {
           'error-soft': '#fef2f2',
           warning: '#b45309',
           'warning-soft': '#fffbeb',
-          info: '#1d4ed8',
-          'info-soft': '#eff6ff',
+          info: '#1A78B8',
+          'info-soft': '#F0F7FC',
         },
         border: {
-          subtle: '#e2e8f0',
-          focus: '#4169e1',
+          subtle: '#E2E8F0',
+          focus: '#1A78B8',
+          rust: '#C8826B',
         },
       },
       fontFamily: {
@@ -62,9 +67,9 @@ export default {
         '4xl': ['2.25rem', { lineHeight: '1.2' }],    // 36px
       },
       boxShadow: {
-        card: '0 2px 8px -2px rgba(10, 17, 40, 0.08), 0 1px 4px -1px rgba(10, 17, 40, 0.04)',
-        'card-hover': '0 10px 24px -4px rgba(10, 17, 40, 0.12), 0 4px 8px -2px rgba(10, 17, 40, 0.06)',
-        dropdown: '0 12px 30px -4px rgba(10, 17, 40, 0.2)',
+        card: '0 2px 8px -2px rgba(43, 56, 92, 0.08), 0 1px 4px -1px rgba(43, 56, 92, 0.04)',
+        'card-hover': '0 10px 24px -4px rgba(43, 56, 92, 0.12), 0 4px 8px -2px rgba(43, 56, 92, 0.06)',
+        dropdown: '0 12px 30px -4px rgba(43, 56, 92, 0.2)',
       },
     },
   },

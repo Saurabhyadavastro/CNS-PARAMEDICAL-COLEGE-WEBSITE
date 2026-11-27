@@ -77,8 +77,15 @@ export const Contact: React.FC = () => {
                   <Phone className="w-5 h-5 text-brand shrink-0 mt-0.5" aria-hidden="true" />
                   <div>
                     <span className="font-bold text-ink block">Telephone Desk:</span>
-                    <p className="text-ink">{siteConfig.contact.phone}</p>
-                    <p className="text-xs text-ink-light">Admission Hotline: {siteConfig.contact.admissionHelpline}</p>
+                    <a
+                      href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`}
+                      className="text-brand hover:text-brand-dark font-bold text-base hover:underline transition-colors focus-ring rounded"
+                    >
+                      {siteConfig.contact.phone}
+                    </a>
+                    <p className="text-xs text-ink-light mt-0.5">
+                      Admission Hotline / WhatsApp: <span className="font-medium text-ink">{siteConfig.contact.admissionHelpline}</span>
+                    </p>
                   </div>
                 </div>
 
@@ -86,7 +93,12 @@ export const Contact: React.FC = () => {
                   <Mail className="w-5 h-5 text-brand shrink-0 mt-0.5" aria-hidden="true" />
                   <div>
                     <span className="font-bold text-ink block">Official Email:</span>
-                    <p className="text-ink">{siteConfig.contact.email}</p>
+                    <a
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className="text-brand hover:text-brand-dark font-medium underline transition-colors focus-ring rounded break-all"
+                    >
+                      {siteConfig.contact.email}
+                    </a>
                   </div>
                 </div>
               </div>

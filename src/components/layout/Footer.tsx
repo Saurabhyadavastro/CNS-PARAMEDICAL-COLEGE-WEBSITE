@@ -118,11 +118,21 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
-                <span>{siteConfig.contact.phone}</span>
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, '')}`}
+                  className="hover:text-white hover:underline transition-colors focus-ring-navy rounded"
+                >
+                  {siteConfig.contact.phone}
+                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
-                <span>{siteConfig.contact.email}</span>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="hover:text-white hover:underline transition-colors focus-ring-navy rounded break-all"
+                >
+                  {siteConfig.contact.email}
+                </a>
               </div>
               <div className="flex items-start gap-2.5 pt-2 border-t border-navy-border">
                 <Clock className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />

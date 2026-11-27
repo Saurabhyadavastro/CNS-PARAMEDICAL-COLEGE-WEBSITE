@@ -37,8 +37,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       primary: 'bg-brand text-white hover:bg-brand-dark active:bg-brand-dark shadow-sm',
       secondary: 'bg-white text-brand border border-brand hover:bg-surface-light active:bg-brand-faint',
       navy: 'bg-navy-dark text-ink-inverse hover:bg-navy-surface border border-navy-border active:bg-navy-surface shadow-sm focus-ring-navy',
-      // High-contrast accent: dark text on orange accent for AA readability
-      accent: 'bg-accent text-ink font-semibold hover:bg-accent-dark hover:text-white shadow-sm',
+      // High-contrast accent: Terracotta Orange CTA button with Warm Rust border
+      accent: 'bg-accent text-white font-semibold hover:bg-accent-dark active:bg-accent-dark border border-accent-rust/40 shadow-sm',
       ghost: 'bg-transparent text-ink hover:bg-surface-muted active:bg-border-subtle',
       danger: 'bg-status-error text-white hover:bg-red-800 shadow-sm',
     }[variant];

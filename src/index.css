@@ -8,7 +8,7 @@
     /* Mobile-first base text size: 16px on mobile, responsive to 14px base on md screens where specified */
     font-size: 16px;
     scroll-behavior: smooth;
-    color: #171717;
+    color: #1E2538;
   }
 
   @screen md {
@@ -22,9 +22,14 @@
     min-height: 100vh;
   }
 
+  /* Headings default to Deep Navy (#2B385C) for rich, authoritative contrast */
+  h1, h2, h3, h4, h5, h6 {
+    color: #2B385C;
+  }
+
   /* Visible focus ring rule for WCAG 2.2 AA keyboard navigation */
   :focus-visible {
-    outline: 2px solid #4169e1;
+    outline: 2px solid #1A78B8;
     outline-offset: 2px;
   }
 }

@@ -58,7 +58,7 @@ export const Section: React.FC<SectionProps> = ({
               <h2
                 id={titleId}
                 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight ${
-                  bgVariant === 'navy' ? 'text-white' : 'text-ink'
+                  bgVariant === 'navy' ? 'text-white' : 'text-navy'
                 }`}
               >
                 {title}

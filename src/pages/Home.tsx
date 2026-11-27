@@ -43,10 +43,22 @@ export const Home: React.FC = () => {
         className="relative bg-navy-dark text-white py-16 md:py-24 lg:py-28 overflow-hidden"
         aria-label="Welcome banner"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/95 to-brand-dark/80 z-10" />
+        {/* Full-Fidelity Campus Photo - Natural Color & High Visibility */}
         <div 
-          className="absolute inset-0 opacity-20 bg-cover bg-center mix-blend-luminosity"
+          className="absolute inset-0 bg-cover bg-center md:bg-[position:center_30%] scale-100 transition-transform duration-700 ease-out"
           style={{ backgroundImage: `url('/images/campus/courtyard-aerial.jpg')` }}
+          aria-hidden="true"
+        />
+
+        {/* Directional Scrim Overlay: Strong contrast for text on the left, open and vibrant on the right */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/85 to-navy-dark/40 md:bg-gradient-to-r md:from-navy-dark md:via-navy-dark/85 md:via-50% md:to-navy-dark/20 lg:to-transparent z-10" 
+          aria-hidden="true"
+        />
+
+        {/* Subtle Top & Bottom Gradient to blend seamlessly with surrounding elements */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-navy-dark/50 via-transparent to-navy-dark/90 z-10 pointer-events-none" 
           aria-hidden="true"
         />
 
@@ -59,39 +71,52 @@ export const Home: React.FC = () => {
               <Badge variant="navy" size="md">
                 Kannauj, Uttar Pradesh
               </Badge>
-              <span className="text-xs text-slate-300 font-medium">
+              <span className="text-xs text-slate-200 font-semibold drop-shadow-xs">
                 Admissions Session 2026–2027 Open
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4 drop-shadow-sm">
               {siteConfig.collegeName}
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed mb-6 font-normal">
+            <p className="text-base sm:text-lg md:text-xl text-slate-100 leading-relaxed mb-6 font-normal drop-shadow-xs">
               Empowering healthcare aspirants through patient-centered clinical practice, disciplined mentorship, and state-of-the-art medical education in rural and urban nursing.
             </p>
 
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mb-8 bg-white/10 backdrop-blur-sm px-4 py-2.5 rounded-lg w-fit border border-white/10">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-100 mb-8 bg-navy-dark/60 backdrop-blur-md px-4 py-2.5 rounded-lg w-fit border border-white/20 shadow-sm">
               <MapPin className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
               <span>{siteConfig.contact.address.full}</span>
             </div>
 
-            {/* Primary Action Button: Opens Enquiry Modal */}
+            {/* Primary Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
               <Button
                 variant="accent"
                 size="lg"
                 onClick={() => openEnquiryModal()}
                 rightIcon={<ArrowRight className="w-5 h-5" aria-hidden="true" />}
+                className="shadow-lg hover:shadow-xl"
               >
                 Apply / Enquire Now
               </Button>
               <Link to="/courses">
-                <Button variant="secondary" size="lg">
+                <Button variant="secondary" size="lg" className="shadow-md bg-white/95 hover:bg-white text-navy font-bold">
                   Explore Courses
                 </Button>
               </Link>
+            </div>
+
+            {/* Campus Infrastructure Badge */}
+            <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-200">
+              <div className="flex items-center gap-2 font-medium">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+                <span>Admissions Active for 2026–2027 Academic Session</span>
+              </div>
+              <div className="hidden sm:flex items-center gap-2 bg-navy-dark/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white shadow-xs">
+                <Building2 className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
+                <span className="font-medium">Campus View: Academic Complex & Quadrangle, Samdhan</span>
+              </div>
             </div>
           </div>
         </div>
@@ -171,15 +196,15 @@ export const Home: React.FC = () => {
 
           <div className="rounded-xl overflow-hidden shadow-card border border-border-subtle bg-navy-dark relative aspect-video">
             <img
-              src="/images/campus/gate.jpg"
-              alt="C.N.S. Paramedical and Nursing College main campus entrance gate in Samdhan, Kannauj"
+              src="/images/campus/courtyard-lawn.jpg"
+              alt="C.N.S. Paramedical and Nursing College lush campus courtyard and academic block in Samdhan, Kannauj"
               className="w-full h-full object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-transparent to-transparent flex items-end p-5">
               <div>
-                <span className="text-xs uppercase font-bold text-accent tracking-wide">Campus Entrance</span>
-                <p className="text-sm font-semibold text-white">Main Academic Gateway & Security Desk, Lakhaiyamau</p>
+                <span className="text-xs uppercase font-bold text-accent tracking-wide">Campus Grounds</span>
+                <p className="text-sm font-semibold text-white">Lush Academic Courtyard & Main Institute Building, Lakhaiyamau</p>
               </div>
             </div>
           </div>
