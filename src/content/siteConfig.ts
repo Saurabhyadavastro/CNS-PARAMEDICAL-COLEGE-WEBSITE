@@ -53,6 +53,10 @@ export interface SiteConfig {
       timing: string;
       closedDays: string;
     };
+    geo?: {
+      latitude: number;
+      longitude: number;
+    };
     mapEmbedUrl: string;
     mapDirectionsUrl: string;
   };
@@ -115,8 +119,12 @@ export const siteConfig: SiteConfig = {
       timing: '9:30 AM – 4:30 PM',
       closedDays: 'Sunday & Gazetted Holidays',
     },
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Lakhaiyamau,+Gursahaiganj+Road,+Samdhan,+Kannauj,+Uttar+Pradesh+209735&t=&z=14&ie=UTF8&iwloc=&output=embed',
-    mapDirectionsUrl: 'https://www.google.com/maps/search/?api=1&query=Lakhaiyamau+Gursahaiganj+Road+Samdhan+Kannauj+Uttar+Pradesh+209735',
+    geo: {
+      latitude: 27.1508603,
+      longitude: 79.7231072,
+    },
+    mapEmbedUrl: 'https://maps.google.com/maps?q=C.N.S+PARAMEDICAL+AND+NURSING+COLLEGE,+Gursahaiganj+Rd,+Samdhan,+Induia+Ganj,+Uttar+Pradesh+209735&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    mapDirectionsUrl: 'https://maps.app.goo.gl/FSygc7RcuC2TbRCw8?g_st=aw',
   },
 
   socialLinks: {

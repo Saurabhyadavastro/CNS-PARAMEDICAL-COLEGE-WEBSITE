@@ -117,7 +117,7 @@ export const Contact: React.FC = () => {
             </Card>
 
             {/* Google Maps Embed */}
-            <div className="rounded-xl overflow-hidden shadow-card border border-border-subtle bg-surface-muted aspect-[4/3] relative">
+            <div className="rounded-xl overflow-hidden shadow-card border border-border-subtle bg-surface-muted aspect-[4/3] relative group">
               <iframe
                 title="C.N.S. Paramedical and Nursing College Location Map"
                 src={siteConfig.contact.mapEmbedUrl}
@@ -129,6 +129,15 @@ export const Contact: React.FC = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="w-full h-full"
               />
+              <a
+                href={siteConfig.contact.mapDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-navy font-semibold text-xs py-1.5 px-3 rounded-lg shadow-md border border-border-subtle flex items-center gap-1.5 transition-all hover:shadow-lg focus-ring"
+              >
+                <span>Open in Maps</span>
+                <ExternalLink className="w-3.5 h-3.5 text-brand" aria-hidden="true" />
+              </a>
             </div>
           </div>
 

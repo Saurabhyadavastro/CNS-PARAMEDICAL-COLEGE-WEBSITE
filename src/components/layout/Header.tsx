@@ -65,10 +65,16 @@ export const Header: React.FC = () => {
       <div className="hidden md:block bg-navy-dark text-white text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-navy-border/50">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-y-1 gap-x-4">
           <div className="flex items-center gap-4 flex-wrap">
-            <span className="inline-flex items-center gap-1.5 text-slate-300">
+            <a
+              href={siteConfig.contact.mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+              title="Open campus location on Google Maps"
+            >
               <MapPin className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
               <span>Samdhan, Kannauj, UP (209735)</span>
-            </span>
+            </a>
             <span className="hidden lg:inline-flex items-center gap-1.5 text-slate-300">
               <Clock className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
               <span>{siteConfig.contact.hours.days}: {siteConfig.contact.hours.timing}</span>
@@ -410,15 +416,21 @@ export const Header: React.FC = () => {
                   </div>
 
                   {/* Location */}
-                  <div className="flex items-start gap-3 text-ink-muted pt-2 border-t border-border-subtle/60">
-                    <div className="w-8 h-8 rounded-full bg-navy/10 text-navy shrink-0 flex items-center justify-center mt-0.5">
+                  <a
+                    href={siteConfig.contact.mapDirectionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 text-ink-muted pt-2 border-t border-border-subtle/60 hover:text-brand transition-colors group"
+                    title="Open campus location on Google Maps"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-navy/10 text-navy group-hover:bg-brand/10 group-hover:text-brand shrink-0 flex items-center justify-center mt-0.5 transition-colors">
                       <MapPin className="w-4 h-4" aria-hidden="true" />
                     </div>
                     <div>
-                      <span className="text-2xs text-ink-muted block">Campus Location</span>
-                      <span className="text-ink text-xs leading-snug">Lakhaiyamau, Gursahaiganj Road, Samdhan, Kannauj (209735)</span>
+                      <span className="text-2xs text-ink-muted block group-hover:text-brand">Campus Location (Open in Maps)</span>
+                      <span className="text-ink text-xs leading-snug group-hover:text-brand">Lakhaiyamau, Gursahaiganj Road, Samdhan, Kannauj (209735)</span>
                     </div>
-                  </div>
+                  </a>
 
                   {/* Announcements Link */}
                   <div className="pt-2 border-t border-border-subtle">

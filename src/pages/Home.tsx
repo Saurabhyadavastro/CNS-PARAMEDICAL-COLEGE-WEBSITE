@@ -12,7 +12,8 @@ import {
   Send,
   Eye,
   Camera,
-  ShieldCheck
+  ShieldCheck,
+  ExternalLink
 } from 'lucide-react';
 import { siteConfig } from '../content/siteConfig';
 import { featuredGalleryImages } from '../content/gallery';
@@ -84,10 +85,17 @@ export const Home: React.FC = () => {
               Empowering healthcare aspirants through patient-centered clinical practice, disciplined mentorship, and state-of-the-art medical education in rural and urban nursing.
             </p>
 
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-100 mb-8 bg-navy-dark/60 backdrop-blur-md px-4 py-2.5 rounded-lg w-fit border border-white/20 shadow-sm">
-              <MapPin className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
-              <span>{siteConfig.contact.address.full}</span>
-            </div>
+            <a
+              href={siteConfig.contact.mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs sm:text-sm text-slate-100 mb-8 bg-navy-dark/60 hover:bg-navy-dark/80 backdrop-blur-md px-4 py-2.5 rounded-lg w-fit border border-white/20 hover:border-accent/40 shadow-sm transition-all group"
+              title="View campus location on Google Maps"
+            >
+              <MapPin className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" aria-hidden="true" />
+              <span className="group-hover:text-white">{siteConfig.contact.address.full}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-300 group-hover:text-accent opacity-75 group-hover:opacity-100 shrink-0 ml-1 transition-opacity" aria-hidden="true" />
+            </a>
 
             {/* Primary Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">

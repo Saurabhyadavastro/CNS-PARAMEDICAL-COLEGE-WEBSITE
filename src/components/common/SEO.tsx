@@ -91,6 +91,12 @@ export const SEO: React.FC<SEOProps> = ({
         postalCode: siteConfig.contact.address.pincode,
         addressCountry: 'IN',
       },
+      hasMap: siteConfig.contact.mapDirectionsUrl,
+      geo: siteConfig.contact.geo ? {
+        '@type': 'GeoCoordinates',
+        latitude: siteConfig.contact.geo.latitude,
+        longitude: siteConfig.contact.geo.longitude,
+      } : undefined,
       telephone: siteConfig.contact.phone.includes('TO_CONFIRM') ? undefined : siteConfig.contact.phone,
       email: siteConfig.contact.email.includes('TO_CONFIRM') ? undefined : siteConfig.contact.email,
       openingHoursSpecification: [
