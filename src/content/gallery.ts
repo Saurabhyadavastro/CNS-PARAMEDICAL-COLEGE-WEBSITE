@@ -104,7 +104,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 'cls-01',
     src: '/images/gallery/classrooms/classroom-lecture-hall-1.jpg',
-    alt: 'Tiered academic lecture hall with comfortable seating and acoustic sound conditioning',
+    alt: 'Academic lecture hall with tiered wooden desk-benches, ceiling fans, and anatomy blackboard in an Indian paramedical college setting',
     caption: 'Tiered Academic Lecture Hall',
     category: 'classrooms',
     categoryName: 'Classrooms',
@@ -112,7 +112,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 'cls-02',
     src: '/images/gallery/classrooms/classroom-smart-interactive.jpg',
-    alt: 'Smart interactive classroom with interactive digital board and multimedia teaching setup',
+    alt: 'Smart interactive teaching classroom with digital display, nursing theory whiteboard, and human anatomy charts in an Indian college setting',
     caption: 'Smart Interactive Teaching Classroom',
     category: 'classrooms',
     categoryName: 'Classrooms',
