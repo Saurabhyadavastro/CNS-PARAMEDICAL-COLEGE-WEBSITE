@@ -188,18 +188,12 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         message: formData.message.trim() || null,
       };
 
-      // Direct insertion to Supabase enquiries table
-      const { data, error } = await supabase
-        .from('enquiries')
-        .insert([payload])
-        .select();
+      // CHANGED: insert only. Visitors can add enquiries but cannot read them back,
+      // so there is no .select() and no data check here.
+      const { error } = await supabase.from('enquiries').insert([payload]);
 
       if (error) {
         throw new Error(error.message || 'Database error occurred while submitting enquiry.');
-      }
-
-      if (!data || data.length === 0) {
-        throw new Error('Database did not record your enquiry. Please retry or contact the admission desk directly.');
       }
 
       // Success workflow
